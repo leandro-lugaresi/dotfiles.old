@@ -44,6 +44,7 @@ packages=(
   cowsay
   git-core
   htop
+  curl
   id3tool
   libssl-dev
   nmap
