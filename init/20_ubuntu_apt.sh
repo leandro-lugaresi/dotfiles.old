@@ -49,6 +49,8 @@ packages=(
   libssl-dev
   nmap
   zsh
+  python3
+  python3-pip
 )
 
 packages=($(setdiff "${packages[*]}" "$(dpkg --get-selections | grep -v deinstall | awk '{print $1}')"))
