@@ -6,26 +6,29 @@ is_osx || return 1
 
 # Homebrew recipes
 recipes=(
-  android-platform-tools
   ansible
   bash
-  cmatrix
-  cowsay
+  bash-completion
+  zsh
+  freetype
   git
   git-extras
   htop-osx
-  hub
-  id3tool
-  lesspipe
-  man2html
-  mercurial
   nmap
-  sl
   ssh-copy-id
   terminal-notifier
-  the_silver_searcher
-  tree
   wget
+  mcrypt
+  azk
+  erlang
+  elixir
+  libpng
+  libyaml
+  php56
+  php56-intl
+  php56-mcrypt
+  phpunit
+  php-code-sniffer
 )
 
 brew_install_recipes
