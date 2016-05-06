@@ -21,6 +21,10 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))"
 zplug "tylerreckart/odin", use:"*.zsh-theme"
+# local scripts
+zplug "~/.dotfiles/source", from:local, use:"*.zsh", ignore:"**/(osx|linux).zsh"
+# zplug "~/.dotfiles/source", from:local, use:"*.osx.zsh", if:"[[ $OSTYPE == *darwin* ]]"
+zplug "~/.dotfiles/source", from:local, use:"*.linux.zsh", if:"[[ $OSTYPE == *linux* ]]"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -42,7 +46,6 @@ zplug load
 
 export EDITOR=vim
 export LANG=en_US.UTF-8
-
 
 #####################################################################
 # completions
@@ -124,6 +127,7 @@ colors
 # alias
 ######################################################################
 alias music="mpsyt"
+alias zshconfig="vim ~/.zshrc"
 
 #####################################################################
 # functions
