@@ -2,14 +2,6 @@
 # zplug
 #####################################################################
 
-export ZSH=$HOME/.zplug/repos/robbyrussell/oh-my-zsh
-for config_file ($ZSH/lib/*.zsh); do
-    custom_config_file="${ZSH_CUSTOM}/lib/${config_file:t}"
-    [ -f "${custom_config_file}" ] && config_file=${custom_config_file}
-    source $config_file
-done
-
-
 # Check if zplug is installed
 [[ -f ~/.zplug/zplug ]] || return
 
@@ -19,7 +11,7 @@ source ~/.zplug/zplug
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting"
-zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))"
+zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:15
 zplug "tylerreckart/odin", use:"*.zsh-theme"
 # local scripts
 zplug "~/.dotfiles/source", from:local, use:"*.zsh", ignore:"**/(osx|linux).zsh"
