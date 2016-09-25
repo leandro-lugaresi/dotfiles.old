@@ -5,11 +5,11 @@ function go_install() {
     #     return 1
     # fi
     GO_VERSION=${1#v}
-    curl "https://storage.googleapis.com/golang/${GO_VERSION}.linux-amd64.tar.gz"
+    curl -O "https://storage.googleapis.com/golang/${GO_VERSION}.linux-amd64.tar.gz"
 
-    rm -r /usr/local/go
+    sudo rm -r /usr/local/go
 
-    tar zxvf ${GO_VERSION}.linux-amd64.tar.gz -C /usr/local
+    sudo tar zxvf ${GO_VERSION}.linux-amd64.tar.gz -C /usr/local
 
     rm ${GO_VERSION}.linux-amd64.tar.gz
 

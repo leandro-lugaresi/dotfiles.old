@@ -3,34 +3,53 @@
 #####################################################################
 
 # Check if zplug is installed
-[[ -f ~/.zplug/zplug ]] || return
+if [[ -f ~/.zplug/init.zsh ]]; then
+    # Essential
+    source ~/.zplug/init.zsh
 
-# Essential
-source ~/.zplug/zplug
+    zplug "zsh-users/zsh-completions"
+    zplug "zsh-users/zsh-history-substring-search"
+    zplug "zsh-users/zsh-syntax-highlighting"
+    zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:15
+    zplug "tylerreckart/odin", use:"*.zsh-theme", nice:16
+    # local scripts
+    zplug "~/.dotfiles/source", from:local, use:"*.zsh", ignore:"**/(osx|linux).zsh"
+    # zplug "~/.dotfiles/source", from:local, use:"*.osx.zsh", if:"[[ $OSTYPE == *darwin* ]]"
+    zplug "~/.dotfiles/source", from:local, use:"*.linux.zsh", if:"[[ $OSTYPE == *linux* ]]"
 
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))", nice:15
-zplug "tylerreckart/odin", use:"*.zsh-theme"
-# local scripts
-zplug "~/.dotfiles/source", from:local, use:"*.zsh", ignore:"**/(osx|linux).zsh"
-# zplug "~/.dotfiles/source", from:local, use:"*.osx.zsh", if:"[[ $OSTYPE == *darwin* ]]"
-zplug "~/.dotfiles/source", from:local, use:"*.linux.zsh", if:"[[ $OSTYPE == *linux* ]]"
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    else
-        echo
+    # Install plugins if there are plugins that have not been installed
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        else
+            echo
+        fi
     fi
+
+    # Then, source plugins and add commands to $PATH
+    zplug load
+else
+    source /usr/share/zsh/scripts/antigen/antigen.zsh
+    # Load the oh-my-zsh's library.
+    antigen use oh-my-zsh
+
+    # Bundles from the default repo (robbyrussell's oh-my-zsh).
+    antigen bundle git
+
+    # Syntax highlighting bundle.
+    antigen bundle zsh-users/zsh-syntax-highlighting
+    antigen bundle zsh-users/zsh-completions
+    antigen bundle zsh-users/zsh-history-substring-search
+    antigen bundle ~/.dotfiles/source
+    antigen-bundle Tarrasch/zsh-autoenv
+    
+    # Load the theme.
+    antigen theme tylerreckart/odin odin.zsh-theme
+
+    # Tell antigen that you're done.
+    antigen apply
 fi
-
-# Then, source plugins and add commands to $PATH
-zplug load
-
 
 #####################################################################
 # environment
