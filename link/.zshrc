@@ -1,7 +1,3 @@
-#####################################################################
-# zplug
-#####################################################################
-
 # Check if zplug is installed
 if [[ ! -f ~/.zsh/antigen/antigen.zsh ]]; then
     mkdir -p ~/.zsh/antigen
@@ -15,18 +11,17 @@ antigen use oh-my-zsh
 antigen bundle git
 
 # Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle ~/.dotfiles/source
-antigen-bundle Tarrasch/zsh-autoenv
+    antigen bundle zsh-users/zsh-syntax-highlighting
+    antigen bundle zsh-users/zsh-completions
+    antigen bundle zsh-users/zsh-history-substring-search
+    antigen bundle ~/.dotfiles/source
+    antigen-bundle Tarrasch/zsh-autoenv
 
 # Load the theme.
 antigen theme tylerreckart/odin odin.zsh-theme
 
 # Tell antigen that you're done.
 antigen apply
-
 #####################################################################
 # environment
 #####################################################################
@@ -103,12 +98,6 @@ fi
 # use prompt colors feature
 autoload -U colors
 colors
-
-#####################################################################
-# options
-######################################################################
-
-
 
 #####################################################################
 # alias
