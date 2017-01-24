@@ -27,7 +27,7 @@ antigen apply
 #####################################################################
 
 export EDITOR=vim
-export LANG=en_US.UTF-8
+export LANG=pt_BR.UTF-8
 
 #####################################################################
 # completions
