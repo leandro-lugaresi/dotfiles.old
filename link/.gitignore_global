@@ -57,11 +57,12 @@ Desktop.ini
 # NPM
 .npmignore
 
-# Vim
+# Editors
 .swp
 .swo
 .*.swp
 .*.swo
+.vscode
 
 # Enviroment Variables
 *.env
