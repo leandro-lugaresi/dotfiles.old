@@ -23,3 +23,5 @@ function dotfiles() {
 }
 
 src
+
+complete -C /home/dev/.go/bin/gocomplete go

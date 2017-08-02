@@ -15,10 +15,13 @@ antigen bundle git
     antigen bundle zsh-users/zsh-completions
     antigen bundle zsh-users/zsh-history-substring-search
     antigen bundle ~/.dotfiles/source
+    antigen bundle https://github.com/tj/git-extras.git etc/git-extras-completion.zsh
     antigen-bundle Tarrasch/zsh-autoenv
 
 # Load the theme.
-antigen theme tylerreckart/odin odin.zsh-theme
+# antigen theme tylerreckart/odin odin.zsh-theme
+antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
+
 
 # Tell antigen that you're done.
 antigen apply
@@ -28,6 +31,7 @@ antigen apply
 
 export EDITOR=vim
 export LANG=pt_BR.UTF-8
+export SPACESHIP_PACKAGE_SHOW=false
 
 #####################################################################
 # completions
@@ -135,3 +139,6 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt inc_append_history
 setopt share_history
+
+autoload -U +X bashcompinit && bashcompinit
+complete -C /home/dev/.go/bin/gocomplete go
